@@ -14,30 +14,18 @@
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Julian Ushanskiu - Web UI Developer">
     <meta property="og:description" content="I am Yulian. Web UI Developer from Ukraine. Coins Score: 1000">
-    <meta property="og:image" content="https://media.licdn.com/dms/image/sync/v2/D4E27AQF-vzLc5P6AMQ/articleshare-shrink_800/B4EZuji2AALUAI-/0/1767975379386?e=1768582800&amp;v=beta&amp;t=MfHBcYgqCMXNfhfH5AE1g73LUBEdxWKoHPMNhDIC-uc">
-    <meta property="og:image:width" content="800">
-    <meta property="og:image:height" content="450">
-    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image" content="https://julian88888888.github.io/testlinkinding/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:url" content="https://julian88888888.github.io/testlinkinding/">
-    <meta property="og:type" content="video.other">
-    
-    <!-- Open Graph Video Tags -->
-    <meta property="og:video" content="https://www.youtube.com/watch?v=siI-Twltu-E">
-    <meta property="og:video:url" content="https://www.youtube.com/watch?v=siI-Twltu-E">
-    <meta property="og:video:secure_url" content="https://www.youtube.com/watch?v=siI-Twltu-E">
-    <meta property="og:video:type" content="text/html">
-    <meta property="og:video:width" content="1280">
-    <meta property="og:video:height" content="720">
-    <meta property="og:video:tag" content="video">
+    <meta property="og:type" content="website">
     
     <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="player">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Julian Ushanskiu - Web UI Developer">
     <meta name="twitter:description" content="I am Yulian. Web UI Developer from Ukraine. Coins Score: 1000">
-    <meta name="twitter:image" content="https://media.licdn.com/dms/image/sync/v2/D4E27AQF-vzLc5P6AMQ/articleshare-shrink_800/B4EZuji2AALUAI-/0/1767975379386?e=1768582800&amp;v=beta&amp;t=MfHBcYgqCMXNfhfH5AE1g73LUBEdxWKoHPMNhDIC-uc">
-    <meta name="twitter:player" content="https://www.youtube.com/embed/siI-Twltu-E">
-    <meta name="twitter:player:width" content="1280">
-    <meta name="twitter:player:height" content="720">
+    <meta name="twitter:image" content="https://julian88888888.github.io/testlinkinding/og.png">
     
     <style>
         * {
@@ -306,7 +294,16 @@
     <div class="container">
         <h1>👤 Julian Ushanskiu - Web UI Developer</h1>
         
-        <button class="share-button" onclick="shareToLinkedIn()">SHARE LINKEDIN</button>
+        <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+            <button class="share-button" onclick="shareToLinkedIn()">SHARE МІЙ САЙТ</button>
+            <button class="share-button" onclick="shareYouTubeToLinkedIn()" style="background: #FF0000;">SHARE YOUTUBE (як YouTube)</button>
+        </div>
+        
+        <div style="background: #e7f3ff; border: 1px solid #0077b5; border-radius: 5px; padding: 15px; margin-bottom: 20px; font-size: 14px;">
+            <strong>💡 Пояснення:</strong><br>
+            • <strong>"SHARE МІЙ САЙТ"</strong> - шарить ваш сайт з красивим preview<br>
+            • <strong>"SHARE YOUTUBE"</strong> - шарить YouTube URL, LinkedIn покаже відео preview "як YouTube"
+        </div>
         
         <div class="preview-block">
             <h2>👁️ LinkedIn Preview</h2>
@@ -328,11 +325,12 @@
         
         <div class="image-block">
             <h2>🖼️ Зображення для og:image</h2>
-            <img src="https://media.licdn.com/dms/image/sync/v2/D4E27AQF-vzLc5P6AMQ/articleshare-shrink_800/B4EZuji2AALUAI-/0/1767975379386?e=1768582800&amp;v=beta&amp;t=MfHBcYgqCMXNfhfH5AE1g73LUBEdxWKoHPMNhDIC-uc" alt="LinkedIn Share Image" id="og-image-display" onerror="this.src='https://i.ytimg.com/vi/siI-Twltu-E/maxresdefault.jpg'; this.onerror=null;">
+            <img src="og.png" alt="LinkedIn Share Image" id="og-image-display" onerror="this.src='https://i.ytimg.com/vi/siI-Twltu-E/maxresdefault.jpg'; this.onerror=null;">
             <div class="image-info">
                 <strong>Зображення для og:image:</strong><br>
-                <span id="image-url-display">https://media.licdn.com/dms/image/sync/v2/D4E27AQF-vzLc5P6AMQ/articleshare-shrink_800/B4EZuji2AALUAI-/0/1767975379386?e=1768582800&amp;v=beta&amp;t=MfHBcYgqCMXNfhfH5AE1g73LUBEdxWKoHPMNhDIC-uc</span><br>
-                <small style="color: #999;">Розмір: 800×450 пікселів (LinkedIn CDN)</small>
+                <span id="image-url-display">og.png (1200×630)</span><br>
+                <small style="color: #999;">Розмір: 1200×630 пікселів</small><br>
+                <small style="color: #ff6b6b; margin-top: 5px; display: block;">⚠️ Файл og.png потрібно завантажити на GitHub Pages</small>
             </div>
         </div>
         
@@ -370,11 +368,12 @@
         <div class="instructions">
             <h2>📋 Інструкції</h2>
             <ul>
-                <li><strong>LinkedIn підтягує preview тільки з Open Graph мета-тегів</strong> - переконайтеся, що всі необхідні og:* теги присутні в &lt;head&gt; секції HTML.</li>
-                <li><strong>Email як окреме поле</strong> - LinkedIn не підтримує окреме поле для email, тому ми вставляємо його в опис (og:description) або можемо додати на картинку.</li>
-                <li><strong>Для повторного тесту</strong> - якщо LinkedIn показує старі дані, потрібно "пробити кеш" через <strong>LinkedIn Post Inspector</strong>. Цей інструмент дозволяє перевірити, які мета-теги бачить LinkedIn, та очистити кеш для конкретного URL.</li>
-                <li><strong>Розмір зображення</strong> - рекомендований розмір для og:image: 1200x630 пікселів (співвідношення 1.91:1).</li>
-                <li><strong>Абсолютні URL</strong> - всі URL (og:image, og:url) мають бути абсолютними (починатися з https://).</li>
+                <li><strong>LinkedIn показує відео preview "як YouTube" ТІЛЬКИ коли шариться сам YouTube URL</strong> - для цього використайте кнопку "SHARE YOUTUBE".</li>
+                <li><strong>Для свого сайту</strong> - LinkedIn покаже звичайний link preview з зображенням. Використайте кнопку "SHARE МІЙ САЙТ".</li>
+                <li><strong>og:image</strong> - використовується файл og.png (1200×630). Файл має бути завантажений на GitHub Pages.</li>
+                <li><strong>og:type="website"</strong> - для свого домену використовується "website", не "video.other".</li>
+                <li><strong>og:url і canonical</strong> - мають бути на тому ж домені, який шариться.</li>
+                <li><strong>Для повторного тесту</strong> - використайте <strong>LinkedIn Post Inspector</strong> для очищення кешу.</li>
             </ul>
             
             <div class="warning">
@@ -470,7 +469,14 @@
         function shareToLinkedIn() {
             const shareUrl = window.location.href;
             const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
-            window.open(linkedInShareUrl, '_blank');
+            window.open(linkedInShareUrl, '_blank', 'noopener,noreferrer');
+        }
+        
+        // Функція для поширення YouTube відео в LinkedIn (як YouTube)
+        function shareYouTubeToLinkedIn() {
+            const videoUrl = "https://www.youtube.com/watch?v=siI-Twltu-E";
+            const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(videoUrl)}`;
+            window.open(linkedInShareUrl, '_blank', 'noopener,noreferrer');
         }
         
         // Функція для копіювання share URL
