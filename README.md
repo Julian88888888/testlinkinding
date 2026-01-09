@@ -8,10 +8,31 @@
 
 ## 🚀 Використання
 
+### Локально
 1. Відкрийте `linkedin-share-test.html` у браузері
 2. Перевірте поточні значення мета-тегів у блоці "Поточні значення мета-тегів"
 3. Натисніть кнопку **"SHARE LINKEDIN"** для поширення посилання
 4. Перевірте preview у LinkedIn
+
+### На GitHub Pages
+
+1. **Налаштуйте GitHub Pages:**
+   - Перейдіть у Settings репозиторію
+   - У розділі "Pages" виберіть Source: "Deploy from a branch"
+   - Виберіть branch: `main` та folder: `/ (root)`
+   - Натисніть Save
+
+2. **Дочекайтеся деплою** (зазвичай 1-2 хвилини)
+
+3. **Відкрийте сторінку:**
+   - `https://julian88888888.github.io/testlinkinding/` (головна сторінка)
+   - `https://julian88888888.github.io/testlinkinding/linkedin-share-test.html` (пряме посилання)
+
+4. **Якщо виникає помилка 404:**
+   - Перевірте, що GitHub Pages увімкнено в Settings
+   - Переконайтеся, що файли закомічені та запушені
+   - Зачекайте кілька хвилин після першого деплою
+   - Перевірте Actions вкладку - там має бути успішний деплой
 
 ## 📝 Мета-теги
 
@@ -61,9 +82,11 @@
 ## 📄 Структура файлів
 
 ```
-linkinding/
+testlinkinding/
+├── index.html                # Головна сторінка (копія linkedin-share-test.html)
 ├── linkedin-share-test.html  # Основна тестова сторінка
 ├── .gitignore                # Git ignore файл
+├── .gitattributes            # Git attributes
 └── README.md                 # Документація
 ```
 
