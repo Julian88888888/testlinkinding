@@ -9,18 +9,18 @@
     <meta name="description" content="Julian Ushanskiu - Web UI Developer from Ukraine. I am Yulian. Coins Score: 1000">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://julian88888888.github.io/testlinkinding/">
+    <link rel="canonical" href="https://testlinkinding.vercel.app/">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Julian Ushanskiu - Web UI Developer">
     <meta property="og:description" content="I am Yulian. Web UI Developer from Ukraine. Coins Score: 1000">
-
+    <meta property="og:url" content="https://testlinkinding.vercel.app/">
+    <meta property="og:type" content="website">
     <meta property="og:image" content="https://i.ytimg.com/vi/siI-Twltu-E/maxresdefault.jpg?v=694e8038">
+    
+    <!-- Рекомендовано -->
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:url" content="https://julian88888888.github.io/testlinkinding/">
-    <meta property="og:type" content="website">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
@@ -326,12 +326,11 @@
         
         <div class="image-block">
             <h2>🖼️ Зображення для og:image</h2>
-            <img src="og.png" alt="LinkedIn Share Image" id="og-image-display" onerror="this.src='https://i.ytimg.com/vi/siI-Twltu-E/maxresdefault.jpg'; this.onerror=null;">
+            <img src="https://i.ytimg.com/vi/siI-Twltu-E/maxresdefault.jpg?v=694e8038" alt="LinkedIn Share Image" id="og-image-display" onerror="this.src='og.png'; this.onerror=null;">
             <div class="image-info">
                 <strong>Зображення для og:image:</strong><br>
-                <span id="image-url-display">og.png (1200×630)</span><br>
-                <small style="color: #999;">Розмір: 1200×630 пікселів</small><br>
-                <small style="color: #ff6b6b; margin-top: 5px; display: block;">⚠️ Файл og.png потрібно завантажити на GitHub Pages</small>
+                <span id="image-url-display">https://i.ytimg.com/vi/siI-Twltu-E/maxresdefault.jpg?v=694e8038</span><br>
+                <small style="color: #999;">Розмір: 1200×630 пікселів (YouTube thumbnail)</small>
             </div>
         </div>
         
@@ -554,11 +553,12 @@
             const ogUrl = document.querySelector('meta[property="og:url"]');
             const canonical = document.querySelector('link[rel="canonical"]');
             
-            if (ogUrl && !ogUrl.getAttribute('content').includes('github.io')) {
+            // Не оновлюємо, якщо вже встановлено vercel.app
+            if (ogUrl && !ogUrl.getAttribute('content').includes('vercel.app')) {
                 ogUrl.setAttribute('content', currentUrl);
             }
             
-            if (canonical && !canonical.getAttribute('href').includes('github.io')) {
+            if (canonical && !canonical.getAttribute('href').includes('vercel.app')) {
                 canonical.setAttribute('href', currentUrl);
             }
         }
