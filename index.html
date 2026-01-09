@@ -172,6 +172,87 @@
             border-radius: 3px;
             font-size: 12px;
         }
+        
+        .preview-block {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .preview-block h2 {
+            color: #0077b5;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .linkedin-preview {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            max-width: 552px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 0 auto;
+        }
+        
+        .linkedin-preview-image {
+            width: 100%;
+            height: 276px;
+            background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .linkedin-preview-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .linkedin-preview-content {
+            padding: 12px 16px;
+        }
+        
+        .linkedin-preview-url {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .linkedin-preview-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .linkedin-preview-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        
+        .linkedin-preview-domain {
+            font-size: 12px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .linkedin-preview-domain::before {
+            content: "🔗";
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -179,6 +260,24 @@
         <h1>👤 Julian Ushanskiu - Web UI Developer</h1>
         
         <button class="share-button" onclick="shareToLinkedIn()">SHARE LINKEDIN</button>
+        
+        <div class="preview-block">
+            <h2>👁️ LinkedIn Preview</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 15px; font-size: 14px;">Як буде виглядати ваше посилання в LinkedIn:</p>
+            <div class="linkedin-preview" id="linkedin-preview">
+                <div class="linkedin-preview-image" id="preview-image">
+                    <div style="color: white; text-align: center; padding: 20px;">
+                        <div style="font-size: 24px; margin-bottom: 10px;">Завантаження...</div>
+                    </div>
+                </div>
+                <div class="linkedin-preview-content">
+                    <div class="linkedin-preview-url" id="preview-url">julian88888888.github.io</div>
+                    <div class="linkedin-preview-title" id="preview-title">-</div>
+                    <div class="linkedin-preview-description" id="preview-description">-</div>
+                    <div class="linkedin-preview-domain" id="preview-domain">julian88888888.github.io/testlinkinding</div>
+                </div>
+            </div>
+        </div>
         
         <div class="info-block">
             <h2>Поточні значення мета-тегів</h2>
@@ -252,6 +351,36 @@
             return emailMatch ? emailMatch[1] : 'Не знайдено';
         }
         
+        // Оновлення preview картки
+        function updatePreview() {
+            const title = getMetaContent('og:title');
+            const description = getMetaContent('og:description');
+            const image = getMetaContent('og:image');
+            const url = getCanonicalUrl();
+            
+            // Оновлюємо заголовок
+            document.getElementById('preview-title').textContent = title || 'No title';
+            
+            // Оновлюємо опис
+            document.getElementById('preview-description').textContent = description || 'No description';
+            
+            // Оновлюємо домен
+            try {
+                const urlObj = new URL(url);
+                document.getElementById('preview-domain').textContent = urlObj.hostname + urlObj.pathname;
+            } catch (e) {
+                document.getElementById('preview-domain').textContent = 'julian88888888.github.io/testlinkinding';
+            }
+            
+            // Оновлюємо зображення
+            const previewImageDiv = document.getElementById('preview-image');
+            if (image) {
+                previewImageDiv.innerHTML = `<img src="${image}" alt="Preview" onerror="this.parentElement.innerHTML='<div style=\\'color: white; text-align: center; padding: 20px;\\'><div style=\\'font-size: 24px; margin-bottom: 10px;\\'>Помилка завантаження</div><div style=\\'font-size: 14px;\\'>${image}</div></div>'">`;
+            } else {
+                previewImageDiv.innerHTML = '<div style="color: white; text-align: center; padding: 20px;"><div style="font-size: 24px; margin-bottom: 10px;">Немає зображення</div></div>';
+            }
+        }
+        
         // Оновлення UI з поточними значеннями
         function updateUI() {
             const title = getMetaContent('og:title');
@@ -265,6 +394,9 @@
             document.getElementById('current-email').textContent = email;
             document.getElementById('current-image').textContent = image || '-';
             document.getElementById('current-url').textContent = url || '-';
+            
+            // Оновлюємо preview
+            updatePreview();
         }
         
         // Функція для поширення в LinkedIn
@@ -333,6 +465,9 @@
                     if (ogImage) ogImage.setAttribute('content', img);
                     if (twitterImage) twitterImage.setAttribute('content', img);
                 }
+                
+                // Оновлюємо preview після зміни параметрів
+                updatePreview();
             }
         }
         
