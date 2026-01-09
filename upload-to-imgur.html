@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завантажити зображення на Imgur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0077b5;
+        }
+        .step {
+            background: #e7f3ff;
+            border-left: 4px solid #0077b5;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .step strong {
+            color: #0077b5;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🖼️ Завантажити зображення на Imgur</h1>
+        
+        <div class="step">
+            <strong>Крок 1:</strong> Відкрийте <a href="https://imgur.com/upload" target="_blank">https://imgur.com/upload</a>
+        </div>
+        
+        <div class="step">
+            <strong>Крок 2:</strong> Перетягніть файл <code>linkedin-share-image.jpg</code> на сторінку або натисніть "New post" і виберіть файл
+        </div>
+        
+        <div class="step">
+            <strong>Крок 3:</strong> Після завантаження натисніть праву кнопку миші на зображенні → <strong>"Copy image address"</strong>
+        </div>
+        
+        <div class="step">
+            <strong>Крок 4:</strong> Оновіть HTML файли, замінивши URL в <code>og:image</code> на ваш Imgur URL
+        </div>
+        
+        <div class="warning">
+            <strong>💡 Примітка:</strong> Imgur URL має виглядати так:<br>
+            <code>https://i.imgur.com/XXXXXXXX.jpg</code>
+        </div>
+        
+        <h2>Альтернатива: Налаштувати GitHub Pages</h2>
+        <div class="step">
+            <strong>Якщо хочете використати GitHub Pages:</strong><br>
+            1. Відкрийте: <a href="https://github.com/Julian88888888/testlinkinding/settings/pages" target="_blank">Settings → Pages</a><br>
+            2. Source: <code>main</code> branch, <code>/ (root)</code> folder<br>
+            3. Save<br>
+            4. Зачекайте 1-5 хвилин<br>
+            5. Зображення буде доступне за URL: <code>https://julian88888888.github.io/testlinkinding/linkedin-share-image.jpg</code>
+        </div>
+    </div>
+</body>
+</html>
+
