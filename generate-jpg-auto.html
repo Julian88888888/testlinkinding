@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Generate JPG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        #status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        canvas {
+            display: none;
+        }
+        #preview {
+            margin: 20px 0;
+        }
+        #preview img {
+            max-width: 100%;
+            border: 2px solid #0077b5;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🖼️ Генерація JPG</h1>
+        <div id="status">Генерується JPG файл...</div>
+        <div id="preview"></div>
+        <canvas id="canvas" width="1200" height="630"></canvas>
+    </div>
+    
+    <script>
+        async function generateJPG() {
+            const statusDiv = document.getElementById('status');
+            const previewDiv = document.getElementById('preview');
+            
+            try {
+                // Завантажуємо SVG
+                const response = await fetch('linkedin-share-image.svg');
+                if (!response.ok) {
+                    throw new Error('Не вдалося завантажити SVG');
+                }
+                const svgText = await response.text();
+                
+                // Створюємо canvas
+                const canvas = document.getElementById('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                // Білий фон (JPG не підтримує прозорість)
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, 1200, 630);
+                
+                // Завантажуємо SVG як зображення
+                const img = new Image();
+                const svgBlob = new Blob([svgText], {type: 'image/svg+xml;charset=utf-8'});
+                const url = URL.createObjectURL(svgBlob);
+                
+                img.onload = function() {
+                    ctx.drawImage(img, 0, 0);
+                    
+                    // Конвертуємо в JPG
+                    canvas.toBlob(function(blob) {
+                        if (!blob) {
+                            throw new Error('Помилка створення JPG');
+                        }
+                        
+                        // Створюємо посилання для завантаження
+                        const link = document.createElement('a');
+                        link.download = 'linkedin-share-image.jpg';
+                        link.href = URL.createObjectURL(blob);
+                        
+                        // Автоматично завантажуємо
+                        link.click();
+                        
+                        // Показуємо preview
+                        const imgPreview = document.createElement('img');
+                        imgPreview.src = link.href;
+                        previewDiv.innerHTML = '<h3>✅ JPG готовий!</h3>';
+                        previewDiv.appendChild(imgPreview);
+                        
+                        statusDiv.innerHTML = '<strong>✅ Готово!</strong><br>Файл <code>linkedin-share-image.jpg</code> завантажено.<br><br>Тепер завантажте його в репозиторій.';
+                        
+                        URL.revokeObjectURL(url);
+                    }, 'image/jpeg', 0.90);
+                };
+                
+                img.onerror = function() {
+                    throw new Error('Помилка завантаження SVG');
+                };
+                
+                img.src = url;
+            } catch (error) {
+                statusDiv.style.background = '#f8d7da';
+                statusDiv.style.color = '#721c24';
+                statusDiv.style.border = '1px solid #f5c6cb';
+                statusDiv.innerHTML = '<strong>❌ Помилка:</strong><br>' + error.message;
+            }
+        }
+        
+        // Автоматично запускаємо
+        window.addEventListener('load', function() {
+            setTimeout(generateJPG, 300);
+        });
+    </script>
+</body>
+</html>
+
