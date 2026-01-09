@@ -256,6 +256,38 @@
             content: "🔗";
             font-size: 14px;
         }
+        
+        .image-block {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .image-block h2 {
+            color: #0077b5;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .image-block img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 2px solid #0077b5;
+        }
+        
+        .image-block .image-info {
+            margin-top: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -279,6 +311,16 @@
                     <div class="linkedin-preview-description" id="preview-description">-</div>
                     <div class="linkedin-preview-domain" id="preview-domain">julian88888888.github.io/testlinkinding</div>
                 </div>
+            </div>
+        </div>
+        
+        <div class="image-block">
+            <h2>🖼️ Зображення для og:image</h2>
+            <img src="https://i.ytimg.com/vi/siI-Twltu-E/maxresdefault.jpg" alt="LinkedIn Share Image" id="og-image-display" onerror="this.src='linkedin-share-image.jpg'; this.onerror=null;">
+            <div class="image-info">
+                <strong>Поточне зображення:</strong><br>
+                <span id="image-url-display">https://i.ytimg.com/vi/siI-Twltu-E/maxresdefault.jpg</span><br>
+                <small style="color: #999;">Розмір: 1280×720 пікселів</small>
             </div>
         </div>
         
@@ -397,6 +439,16 @@
             document.getElementById('current-email').textContent = email;
             document.getElementById('current-image').textContent = image || '-';
             document.getElementById('current-url').textContent = url || '-';
+            
+            // Оновлюємо зображення в блоці
+            const ogImageDisplay = document.getElementById('og-image-display');
+            const imageUrlDisplay = document.getElementById('image-url-display');
+            if (image && ogImageDisplay) {
+                ogImageDisplay.src = image;
+                if (imageUrlDisplay) {
+                    imageUrlDisplay.textContent = image;
+                }
+            }
             
             // Оновлюємо preview
             updatePreview();
