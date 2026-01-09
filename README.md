@@ -77,7 +77,17 @@
 
 ## 🖼️ Зображення
 
-Для `og:image` використовується placeholder URL. Для продакшн використання замініть його на реальне зображення розміром 1200x630 пікселів.
+Проект містить власне зображення `linkedin-share-image.svg` розміром 1200x630 пікселів для `og:image`.
+
+**Примітка про формат:**
+- LinkedIn зазвичай підтримує SVG, але для максимальної сумісності рекомендовано використовувати PNG або JPG
+- Якщо SVG не працює, використайте `convert-svg-to-png.html` для конвертації SVG в PNG
+- Або завантажте SVG на [CloudConvert](https://cloudconvert.com/svg-to-png) або інший онлайн конвертер
+
+**Для заміни зображення:**
+1. Замініть `linkedin-share-image.svg` на ваше зображення
+2. Оновіть URL в `og:image` та `twitter:image` meta тегах
+3. Переконайтеся, що розмір зображення 1200x630 пікселів
 
 ## 📄 Структура файлів
 
@@ -85,6 +95,8 @@
 testlinkinding/
 ├── index.html                # Головна сторінка (копія linkedin-share-test.html)
 ├── linkedin-share-test.html  # Основна тестова сторінка
+├── linkedin-share-image.svg  # Зображення для og:image (1200x630)
+├── convert-svg-to-png.html   # Інструмент для конвертації SVG в PNG
 ├── .gitignore                # Git ignore файл
 ├── .gitattributes            # Git attributes
 └── README.md                 # Документація
