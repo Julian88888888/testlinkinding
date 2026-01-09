@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Share Test Page</title>
+    
+    <!-- Basic Meta -->
+    <meta name="description" content="Тестова сторінка для перевірки Open Graph мета-тегів LinkedIn. Email: test@example.com">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://example.com/linkedin-share-test.html">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="LinkedIn Share Test - Default Title">
+    <meta property="og:description" content="Тестова сторінка для перевірки Open Graph мета-тегів LinkedIn. Email: test@example.com">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/0066CC/FFFFFF?text=LinkedIn+Share+Test">
+    <meta property="og:url" content="https://example.com/linkedin-share-test.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LinkedIn Share Test - Default Title">
+    <meta name="twitter:description" content="Тестова сторінка для перевірки Open Graph мета-тегів LinkedIn. Email: test@example.com">
+    <meta name="twitter:image" content="https://via.placeholder.com/1200x630/0066CC/FFFFFF?text=LinkedIn+Share+Test">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #0077b5;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .share-button {
+            background: #0077b5;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: background 0.3s;
+        }
+        
+        .share-button:hover {
+            background: #005885;
+        }
+        
+        .info-block {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .info-block h2 {
+            color: #0077b5;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .info-item {
+            margin-bottom: 12px;
+            padding: 10px;
+            background: white;
+            border-radius: 3px;
+            border-left: 3px solid #0077b5;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #666;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            color: #333;
+            word-break: break-all;
+            font-size: 14px;
+        }
+        
+        .copy-button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        
+        .copy-button:hover {
+            background: #218838;
+        }
+        
+        .instructions {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .instructions h2 {
+            color: #0077b5;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .instructions ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .instructions li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        .warning strong {
+            color: #856404;
+        }
+        
+        .query-params-note {
+            background: #e7f3ff;
+            border: 1px solid #0077b5;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        
+        .query-params-note code {
+            background: #fff;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 LinkedIn Share Test Page</h1>
+        
+        <button class="share-button" onclick="shareToLinkedIn()">SHARE LINKEDIN</button>
+        
+        <div class="info-block">
+            <h2>Поточні значення мета-тегів</h2>
+            <div class="info-item">
+                <div class="info-label">Title</div>
+                <div class="info-value" id="current-title">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Description</div>
+                <div class="info-value" id="current-description">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Email</div>
+                <div class="info-value" id="current-email">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Image URL</div>
+                <div class="info-value" id="current-image">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Canonical URL</div>
+                <div class="info-value" id="current-url">-</div>
+            </div>
+            <button class="copy-button" onclick="copyShareUrl()">Copy share URL</button>
+        </div>
+        
+        <div class="query-params-note">
+            <strong>💡 Query Parameters:</strong> Ви можете змінити значення через URL параметри:
+            <code>?title=...&desc=...&email=...&img=...</code>
+            <br><small>Примітка: Для того щоб LinkedIn бачив нові значення, потрібно оновити meta теги на сервері або використати серверний рендеринг.</small>
+        </div>
+        
+        <div class="instructions">
+            <h2>📋 Інструкції</h2>
+            <ul>
+                <li><strong>LinkedIn підтягує preview тільки з Open Graph мета-тегів</strong> - переконайтеся, що всі необхідні og:* теги присутні в &lt;head&gt; секції HTML.</li>
+                <li><strong>Email як окреме поле</strong> - LinkedIn не підтримує окреме поле для email, тому ми вставляємо його в опис (og:description) або можемо додати на картинку.</li>
+                <li><strong>Для повторного тесту</strong> - якщо LinkedIn показує старі дані, потрібно "пробити кеш" через <strong>LinkedIn Post Inspector</strong>. Цей інструмент дозволяє перевірити, які мета-теги бачить LinkedIn, та очистити кеш для конкретного URL.</li>
+                <li><strong>Розмір зображення</strong> - рекомендований розмір для og:image: 1200x630 пікселів (співвідношення 1.91:1).</li>
+                <li><strong>Абсолютні URL</strong> - всі URL (og:image, og:url) мають бути абсолютними (починатися з https://).</li>
+            </ul>
+            
+            <div class="warning">
+                <strong>⚠️ Важливо:</strong> LinkedIn скрейпер читає HTML напряму з сервера. Якщо ви змінюєте meta теги через JavaScript, LinkedIn їх не побачить. Для динамічної зміни мета-тегів потрібен серверний рендеринг або статичні HTML файли з різними значеннями.
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Функція для отримання параметрів з URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+        
+        // Функція для отримання поточних значень мета-тегів
+        function getMetaContent(property) {
+            const meta = document.querySelector(`meta[property="${property}"]`);
+            return meta ? meta.getAttribute('content') : '';
+        }
+        
+        // Функція для отримання canonical URL
+        function getCanonicalUrl() {
+            const canonical = document.querySelector('link[rel="canonical"]');
+            return canonical ? canonical.getAttribute('href') : window.location.href;
+        }
+        
+        // Функція для витягування email з description
+        function extractEmail(description) {
+            const emailMatch = description.match(/Email:\s*([^\s]+@[^\s]+)/i);
+            return emailMatch ? emailMatch[1] : 'Не знайдено';
+        }
+        
+        // Оновлення UI з поточними значеннями
+        function updateUI() {
+            const title = getMetaContent('og:title');
+            const description = getMetaContent('og:description');
+            const image = getMetaContent('og:image');
+            const url = getCanonicalUrl();
+            const email = extractEmail(description);
+            
+            document.getElementById('current-title').textContent = title || '-';
+            document.getElementById('current-description').textContent = description || '-';
+            document.getElementById('current-email').textContent = email;
+            document.getElementById('current-image').textContent = image || '-';
+            document.getElementById('current-url').textContent = url || '-';
+        }
+        
+        // Функція для поширення в LinkedIn
+        function shareToLinkedIn() {
+            const shareUrl = window.location.href;
+            const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+            window.open(linkedInShareUrl, '_blank');
+        }
+        
+        // Функція для копіювання share URL
+        function copyShareUrl() {
+            const shareUrl = window.location.href;
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✓ Скопійовано!';
+                button.style.background = '#28a745';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#28a745';
+                }, 2000);
+            }).catch(err => {
+                console.error('Помилка копіювання:', err);
+                alert('Не вдалося скопіювати URL. Скопіюйте вручну: ' + shareUrl);
+            });
+        }
+        
+        // Обробка query параметрів (опціонально - для UI, але не для OG тегів)
+        function handleQueryParams() {
+            const title = getQueryParam('title');
+            const desc = getQueryParam('desc');
+            const email = getQueryParam('email');
+            const img = getQueryParam('img');
+            
+            if (title || desc || email || img) {
+                // Оновлюємо meta теги в DOM (для UI, але LinkedIn скрейпер їх не побачить)
+                if (title) {
+                    const ogTitle = document.querySelector('meta[property="og:title"]');
+                    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+                    if (ogTitle) ogTitle.setAttribute('content', title);
+                    if (twitterTitle) twitterTitle.setAttribute('content', title);
+                    document.title = title;
+                }
+                
+                if (desc) {
+                    const ogDesc = document.querySelector('meta[property="og:description"]');
+                    const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+                    const metaDesc = document.querySelector('meta[name="description"]');
+                    if (ogDesc) ogDesc.setAttribute('content', desc);
+                    if (twitterDesc) twitterDesc.setAttribute('content', desc);
+                    if (metaDesc) metaDesc.setAttribute('content', desc);
+                }
+                
+                if (email && desc) {
+                    // Додаємо email до description якщо його там немає
+                    const ogDesc = document.querySelector('meta[property="og:description"]');
+                    if (ogDesc && !ogDesc.getAttribute('content').includes('Email:')) {
+                        const currentDesc = ogDesc.getAttribute('content');
+                        ogDesc.setAttribute('content', `${currentDesc} Email: ${email}`);
+                    }
+                }
+                
+                if (img) {
+                    const ogImage = document.querySelector('meta[property="og:image"]');
+                    const twitterImage = document.querySelector('meta[name="twitter:image"]');
+                    if (ogImage) ogImage.setAttribute('content', img);
+                    if (twitterImage) twitterImage.setAttribute('content', img);
+                }
+            }
+        }
+        
+        // Ініціалізація
+        document.addEventListener('DOMContentLoaded', function() {
+            handleQueryParams();
+            updateUI();
+        });
+    </script>
+</body>
+</html>
+
