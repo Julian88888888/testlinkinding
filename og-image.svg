@@ -1,0 +1,38 @@
+<svg width="1200" height="627" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0077b5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#005885;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="627" fill="url(#bgGradient)"/>
+  
+  <!-- LinkedIn icon background circle -->
+  <circle cx="600" cy="195" r="75" fill="white" opacity="0.2"/>
+  <circle cx="600" cy="195" r="55" fill="white" opacity="0.3"/>
+  
+  <!-- LinkedIn "in" text (simplified) -->
+  <text x="600" y="195" font-family="Arial, sans-serif" font-size="65" font-weight="bold" fill="white" text-anchor="middle" opacity="0.9">in</text>
+  
+  <!-- Name and Title -->
+  <text x="600" y="270" font-family="Arial, sans-serif" font-size="50" font-weight="bold" fill="white" text-anchor="middle">Julian Ushanskiu</text>
+  
+  <!-- Position -->
+  <text x="600" y="315" font-family="Arial, sans-serif" font-size="30" fill="white" text-anchor="middle" opacity="0.95">Web UI Developer</text>
+  
+  <!-- Location -->
+  <text x="600" y="360" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" opacity="0.9">🇺🇦 Ukraine</text>
+  
+  <!-- Description -->
+  <text x="600" y="410" font-family="Arial, sans-serif" font-size="26" fill="white" text-anchor="middle" opacity="0.85">I am Yulian</text>
+  
+  <!-- Coins Score -->
+  <text x="600" y="465" font-family="Arial, sans-serif" font-size="34" font-weight="bold" fill="white" text-anchor="middle">🪙 Coins Score: 1000</text>
+  
+  <!-- Bottom decoration -->
+  <line x1="200" y1="555" x2="1000" y2="555" stroke="white" stroke-width="2" opacity="0.3"/>
+</svg>
+
